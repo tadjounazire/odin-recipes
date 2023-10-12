@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Simple Calculator</title>
+        <style>
+            button{
+                background-color: dodgerblue;
+                color: white;
+                width: 75px;
+                height: 50px;
+                border-radius: 3px;
+                font-size: larger;
+                font-weight: 600;
+                border: dodgerblue;
+                margin-bottom: 10px;
+                cursor: pointer;
+            }
+            .forth-row-numbers-container button:nth-child(1){
+                width: 150px;
+            }
+            .fifth-row-numbers-container button:nth-child(1){
+                width: 150px;
+            }
+            input{
+                border: 2px dodgerblue solid;
+                width: 310px;
+                height: 80px;
+                border-radius: 5px;
+                margin-bottom: 25px;
+                font-size: larger;
+                color: dodgerblue;
+                font-weight: 600;
+                cursor: pointer;
+            }
+            .container{
+                display: grid;
+                place-items: center;
+                margin: 100px auto;  
+                border: 3px solid dodgerblue;
+                height: 395px;
+                width: 325px;
+                padding: 15px;
+            }
+        </style>
+    </head>
+        <body>
+        <div class="container">
+            <div class="input-field-container">
+                <input type="text" placeholder="Standard Calculator" accept="" id="display" readonly>
+            </div>
+            <div class="first-row-numbers-container">
+                <button onclick="show(7)" id="btn">7</button>
+                <button onclick="show(8)" id="btn">8</button>
+                <button onclick="show(9)" id="btn">9</button>
+                <button onclick="show('/')"  id="btn">/</button>
+            </div>
+            <div class="second-row-numbers-container">
+                <button onclick="show(4)" id="btn">4</button>
+                <button onclick="show(5)" id="btn">5</button>
+                <button onclick="show(6)" id="btn">6</button>
+                <button onclick="show('*')" id="btn">*</button>
+            </div>
+            <div class="third-row-numbers-container">
+                <button onclick="show(1)" id="btn">1</button>
+                <button onclick="show(2)" id="btn">2</button>
+                <button onclick="show(3)" id="btn">3</button>
+                <button onclick="show('-')" id="btn">-</button>
+            </div>
+            <div class="forth-row-numbers-container">
+                <button onclick="show(0)" id="btn">0</button>
+                <button onclick="show('.')" id="btn">.</button>
+                <button onclick="show('+')" id="btn">+</button>
+            </div>
+            <div class="fifth-row-numbers-container">
+                <button onclick="display.value = ''">CE</button>
+                <button onclick="display.value = display.value.toString().slice(0, display.value.length-1)">DEL</button>
+                <button onclick="display.value = eval(display.value)">=</button>
+            </div>
+        </div>
+        <script>
+            function show(number){
+                display.value += number;
+            }
+            document.addEventListener("keydown", () => {
+                if(event.key == 0){
+                    show(0);
+                }
+                if(event.key == 1){
+                    show(1);
+                }
+                if(event.key == 2){
+                    show(2);
+                }
+                if(event.key == 3){
+                    show(3);
+                }
+                if(event.key == 4){
+                    show(4);
+                }
+                if(event.key == 5){
+                    show(5);
+                }
+                if(event.key == 6){
+                    show(6);
+                }
+                if(event.key == 7){
+                    show(7);
+                }
+                if(event.key == 8){
+                    show(8);
+                }
+                if(event.key == 9){
+                    show(9);
+                }
+                if(event.key == '+'){
+                    show('+');
+                }
+                if(event.key == '-'){
+                    show('-');
+                }
+                if(event.key == '/'){
+                    show('/');
+                }
+                if(event.key == '*'){
+                    show('*');
+                }
+                if(event.key == 'Backspace'){
+                    display.value = display.value.toString().slice(0, display.value.length-1);
+                }
+                if(event.key == 'Enter' || event.key == '='){
+                    display.value = eval(display.value);
+                }
+                if(event.key == 'Delete'){
+                    display.value = '';
+                }
+            })
+        </script>
+    </body>
+</html>
